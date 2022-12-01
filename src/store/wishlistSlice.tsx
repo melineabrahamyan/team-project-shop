@@ -3,7 +3,7 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import type {RootState} from './index'
 
 type WishlistItem={
-     id: number, price: number, name : string
+     id: number, price: number, name : string, image: string, desc : string
 };
 
 type WishlistState= {
@@ -16,7 +16,7 @@ const wishlistSlice = createSlice({
     name: 'wishlist',
     initialState,
     reducers: {
-      toggleFromProductList(state, action : PayloadAction<{id: number, price: number,name: string}>) {
+      toggleFromProductList(state, action : PayloadAction<{id: number, price: number,name: string, image: string, desc : string}>) {
         const itemIndex=state.wishlistItems.findIndex(item=>item.id===action.payload.id)
   
         if (itemIndex>=0) {
