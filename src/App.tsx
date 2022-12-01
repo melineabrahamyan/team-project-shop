@@ -12,6 +12,8 @@ import Wishlist from './pages/wishlist';
 //components
 import Navbar from './components/navbar';
 import Footer from './components/footer';
+import CategoryMen from './pages/categoryMen';
+import CategoryWomen from './pages/categoryWomen';
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/category/:id" element={<Category />} />
+        <Route path="/mens" element={<CategoryMen />} />
+        <Route path="/womens" element={<CategoryWomen />} />
       </Routes>
       <Footer/>
     </div>
