@@ -3,7 +3,7 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import type {RootState} from './index'
 
 type CartItem={
-    cartQuantity: number; id: number, price: number, name : string
+    cartQuantity: number; id: number, price: number, name : string, image : string, desc : string
 };
 
 type CartState= {
@@ -19,7 +19,7 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addToCart(state, action : PayloadAction<{id: number, price: number,name: string, cartQuantity? : number}>) {
+    addToCart(state, action : PayloadAction<{id: number, price: number,name: string, cartQuantity? : number, image: string, desc : string}>) {
       const itemIndex=state.cartItems.findIndex(item=>item.id===action.payload.id)
 
       if (itemIndex>=0) {
