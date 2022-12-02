@@ -15,6 +15,10 @@
     font-weight: 400;
     text-transform: uppercase;
   }
+
+  .cart-container .product-title{
+    text-align: left;
+  }
   .cart-item,
   .cart-container .titles {
     display: grid;
