@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom";
+import SignIn from "../signIn";
+import {useAuth} from "../../hooks/use-auth";
+import {useDispatch} from "react-redux";
+import {removeUser} from "../../store/userSlice";
 
 export default function Navbar(){
+    const dispatch = useDispatch()
+    const {isAuth,email} = useAuth()
+
+    console.log(isAuth)
     return (
     <div>
         <Link to='/'>Home</Link>
@@ -11,7 +19,7 @@ export default function Navbar(){
         <Link to='/wishlist'>Wishlist</Link>
         {'    '}
         <Link to='/cart'>Cart</Link>
-        {/* <Login/> popup */}
+        {isAuth ? <button onClick={()=>dispatch(removeUser())}>{email}</button>:<SignIn/>}
     </div>
     )
 }
