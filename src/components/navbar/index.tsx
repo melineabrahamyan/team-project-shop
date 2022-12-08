@@ -1,5 +1,4 @@
-import * as React from "react";
-import { Link } from "react-router-dom";
+
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -14,7 +13,10 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 // import AdbIcon from '@mui/icons-material/Adb';
 import { v4 as uuidv4 } from 'uuid';
-
+import SignIn from "../signIn";
+import {useAuth} from "../../hooks/use-auth";
+import {useDispatch} from "react-redux";
+import {removeUser} from "../../store/userSlice";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -179,6 +181,7 @@ function Navbar() {
                 Cart
               </Button>
             </Link>
+             {isAuth ? <button onClick={()=>dispatch(removeUser())}>{email}</button>:<SignIn/>}
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -214,4 +217,5 @@ function Navbar() {
   );
 }
 export default Navbar;
+
 
