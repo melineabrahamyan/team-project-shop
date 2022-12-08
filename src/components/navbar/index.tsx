@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -13,8 +13,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 // import AdbIcon from '@mui/icons-material/Adb';
-import { v4 as uuidv4 } from 'uuid';
-
+import { v4 as uuidv4 } from "uuid";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -44,28 +43,28 @@ function Navbar() {
   //elevation={0}
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: "white",height: '75%' }} >
+    <AppBar position="static" sx={{ backgroundColor: "white", height: "75%" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
           <Link to="/" style={{ textDecoration: "none" }}>
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "black",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography>
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="/"
+              sx={{
+                mr: 2,
+                display: { xs: "none", md: "flex" },
+                fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+                color: "black",
+                textDecoration: "none",
+              }}
+            >
+              LOGO
+            </Typography>
           </Link>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -162,23 +161,23 @@ function Navbar() {
             </Link>
           </Box>
           <Link to="/wishlist" style={{ textDecoration: "none" }}>
-              <Button
-                key={uuidv4()}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "black", display: "block" }}
-              >
-                Wishlist
-              </Button>
-            </Link>
-            <Link to="/cart" style={{ textDecoration: "none" }}>
-              <Button
-                key={uuidv4()}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "black", display: "block" }}
-              >
-                Cart
-              </Button>
-            </Link>
+            <Button
+              key={uuidv4()}
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: "black", display: "block" }}
+            >
+              Wishlist
+            </Button>
+          </Link>
+          <Link to="/cart" style={{ textDecoration: "none" }}>
+            <Button
+              key={uuidv4()}
+              onClick={handleCloseNavMenu}
+              sx={{ my: 2, color: "black", display: "block" }}
+            >
+              Cart
+            </Button>
+          </Link>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -214,4 +213,3 @@ function Navbar() {
   );
 }
 export default Navbar;
-
