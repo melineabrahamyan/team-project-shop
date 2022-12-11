@@ -14,8 +14,12 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 // import AdbIcon from '@mui/icons-material/Adb';
 import { v4 as uuidv4 } from "uuid";
+import SignIn from "../signIn";
+import {useAuth} from "../../hooks/use-auth";
+import {useDispatch} from "react-redux";
+import {removeUser} from "../../store/userSlice";
 
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -39,6 +43,9 @@ function Navbar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const dispatch = useDispatch()
+  const {isAuth,email} = useAuth()
 
   //elevation={0}
 
@@ -177,6 +184,7 @@ function Navbar() {
             >
               Cart
             </Button>
+
           </Link>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
@@ -200,11 +208,7 @@ function Navbar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={uuidv4()} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+                {isAuth ? <button onClick={()=>dispatch(removeUser())}>{email}</button>:<SignIn/>}
             </Menu>
           </Box>
         </Toolbar>
