@@ -20,14 +20,15 @@ const wishlistSlice = createSlice({
       const itemIndex = state.wishlistItems.findIndex(
         (item) => item.id === action.payload.id
       );
-
-      if (itemIndex >= 0) {
+console.log(itemIndex)
+      if (itemIndex>=0) {
         state.wishlistItems = state.wishlistItems.filter(
           (item) => item.id !== action.payload.id
         );
       } else {
         state.wishlistItems.push(action.payload);
       }
+      
     },
 
     removeFromWishlist(state, action: PayloadAction<{ id: string }>) {
