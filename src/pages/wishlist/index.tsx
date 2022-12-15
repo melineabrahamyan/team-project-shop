@@ -18,7 +18,7 @@ export default function Wishlist() {
         <div className="wishlist-items">
           {wishlist.wishlistItems.map((item) => {
             return (
-              <div className="wishlist-item">
+              <div key={item.id} className="wishlist-item">
                 <div className="wishlist-img-container">
                   <img src={item.images[0]} alt={item.title} />
                   <i
