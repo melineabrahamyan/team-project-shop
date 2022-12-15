@@ -22,7 +22,8 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/category/:id" element={<Category />} />
+        {/* <Route path="/category/:id" element={<Category />} /> */}
+        <Route path="/category" element={<Category />} />
         <Route path="/:gender" element={<Gender />} />
       </Routes>
       <Footer />

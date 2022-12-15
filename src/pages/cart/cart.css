@@ -27,7 +27,7 @@
     padding: 1rem 0;
   }
   .cart-container .titles .product-title {
-    padding-left: 0.5rem;
+    text-align: start;
   }
   .cart-container .titles .total {
     padding-right: 0.5rem;

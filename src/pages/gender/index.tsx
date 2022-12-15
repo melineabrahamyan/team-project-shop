@@ -47,13 +47,13 @@ function Gender() {
         return (
           <div key={product.id}>
             <FavoriteBorderIcon
-              onClick={() => dispatch(toggleFromProductList(product))}
+              // onClick={() => dispatch(toggleFromProductList(product))}
               className="favoriteIcon"
             />
             <Product {...product} />
-            <button onClick={() => dispatch(addToCart(product))}>
+            {/* <button onClick={() => dispatch(addToCart(product))}>
               Add to bag
-            </button>
+            </button> */}
           </div>
         );
       })}

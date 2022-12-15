@@ -1,7 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import {
-  toggleFromProductList,
   removeFromWishlist,
   selectWishlist,
 } from "../../store/wishlistSlice";
@@ -21,7 +20,7 @@ export default function Wishlist() {
             return (
               <div className="wishlist-item">
                 <div className="wishlist-img-container">
-                  <img src={item.img} alt={item.title} />
+                  <img src={item.images[0]} alt={item.title} />
                   <i
                     onClick={() => {
                       dispatch(removeFromWishlist({ id: item.id }));
@@ -31,7 +30,11 @@ export default function Wishlist() {
                 </div>
                 <div className="wishlist-product-price">$ {item.price}</div>
                 <div className="wishlist-product-name">{item.title}</div>
-                {/* <div className="wishlist-add-to-cart" onClick={()=>{dispatch(addToCart(item))}}>Add to cart</div> */}
+                <div>
+                <i className="fa-solid fa-horizontal-rule"></i>
+                </div>
+                <div>choose size<i className="fa-solid fa-angle-down"></i></div>
+                <div className="wishlist-add-to-cart" onClick={()=>{dispatch(addToCart(item))}}>Add to cart</div>
               </div>
             );
           })}
