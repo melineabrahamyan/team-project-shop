@@ -64,3 +64,14 @@
   .wishlist-add-to-cart:hover{
     background-color: rgb(101, 101, 101);
   }
+
+
+  .fa-horizontal-rule{
+    border: 1px solid black;
+    width: 100%;
+  }
+
+  .fa-angle-down{
+    text-align: end;
+    
+  }
