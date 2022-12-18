@@ -12,6 +12,7 @@ import Wishlist from "./pages/wishlist";
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import Gender from "./pages/gender";
+import SingleProduct from "./pages/singleProduct";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/:gender" element={<Gender />} />
         <Route path="/:gender/:category" element={<Category />} />
+        <Route path="/:gender/:category/:id" element={<SingleProduct />} />
       </Routes>
       <Footer />
     </div>

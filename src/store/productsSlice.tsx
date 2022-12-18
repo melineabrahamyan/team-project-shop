@@ -6,9 +6,10 @@ import { projectFireStore } from '../firebase';
 
 type ProductsState= {
     products: Item[];
+    singleProduct: Item
 };
-    
-const initialState = {products: []} as ProductsState;
+    //@ts-ignore
+const initialState = {products: [], singleProduct: {}} as ProductsState;
 
 
 export const getProducts=createAsyncThunk('products', async([gender, category]: string[])=>{
@@ -18,7 +19,7 @@ export const getProducts=createAsyncThunk('products', async([gender, category]: 
         .then((snapshot) => {
         //@ts-ignore
             return snapshot.docs.map((doc) => {
-                return doc.data();
+                return {id: doc.id, ...doc.data()}
              })
     }); 
   }
@@ -26,41 +27,54 @@ export const getProducts=createAsyncThunk('products', async([gender, category]: 
   return projectFireStore.collection(`/${gender}`)
     .get()
     .then((snapshot) => {
-    //@ts-ignore
       return snapshot.docs.map((doc) => {
-           if(doc.data().category===category){
-            return doc.data()
-           }
+            return {id: doc.id, ...doc.data()}
+       }).filter(product=>{
+         //@ts-ignore
+        return product.category===category
        })
-});
-    
-           
+    });          
 },)
+
+
+
+export const getSingleProduct=createAsyncThunk('single-product', async([gender, id]: string[])=>{
+    return projectFireStore.collection(`/${gender}`)
+      .get()
+      .then((snapshot) => {
+        return snapshot.docs.map((doc) => {
+              return {id: doc.id, ...doc.data()}
+         }).find(product=>product.id===id)
+      });          
+  },)
 
 const productsSlice=createSlice({
     name: 'products',
     initialState,
     reducers: {
-        
+      // getSingleProduct(state, action ) {
+      //   //@ts-ignore
+      //   state.singleProduct= state.products.find(product=>{
+      //    return product.id===action.payload.id
+      //   })
+      // },
     },
-    extraReducers: {
-        //@ts-ignore
-        [getProducts.pending]: (state)=>{
-            state.loading=true
-        },
-        //@ts-ignore
-        [getProducts.fulfilled]: (state, action:PayloadAction<Item>)=>{
-            state.loading=false;
+    extraReducers: (builder) => {
+        builder
+        .addCase(getProducts.fulfilled, (state, action) => {
+            //@ts-ignore
             state.products=action.payload
-        },
-        //@ts-ignore
-        [getProducts.rejected]: (state)=>{
-            state.loading=false
-        },
-    }
+          })
+          .addCase(getSingleProduct.fulfilled, (state, action) => {
+            //@ts-ignore
+            state.singleProduct=action.payload
+          })
+      },
 })
 
 
 
-export const selectProducts = (state: RootState) => state.products;
+export const selectProducts = (state: RootState) => state.products.products;
+// export const { getSingleProduct } = productsSlice.actions
+export const selectSingleProduct = (state: RootState) => state.products.singleProduct;
 export default productsSlice.reducer;

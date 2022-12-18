@@ -3,20 +3,25 @@ import { useSelector , useDispatch} from "react-redux"
 import './index.css'
 import {toggleFromProductList } from "../../store/wishlistSlice"
 import { getProducts, selectProducts } from "../../store/productsSlice"
-import { useParams } from "react-router"
+import { useNavigate, useParams } from "react-router"
 
 
 export default function Category(){
-    const {products}=useSelector(selectProducts);
+    const products=useSelector(selectProducts);
     const dispatch=useDispatch();
     const {gender, category}=useParams();
-
-    // let b=store.find(item=>item.similarItems[0]==='Czx3INjIJPFVsW05hGUv')
   
     useEffect(()=>{
         //@ts-ignore
         dispatch(getProducts([gender, category]))
-    },[gender, category])
+
+    },[]);
+
+
+    const navigate=useNavigate();
+    const handleNavigate=(id: string)=>{
+      navigate(`${id}`)
+    }
 
     return <div>
         <div className="product-list-container">
@@ -26,7 +31,7 @@ export default function Category(){
             if(item){
               return (
                 <div key={item.id} className="product-list-item">
-                  <div className="product-list-img-container">
+                  <div className="product-list-img-container" onClick={()=>handleNavigate(item.id)}>
                     <img src={item.images[0]} alt={item.title} />
                     <i
                       onClick={() => {
