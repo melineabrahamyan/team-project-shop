@@ -56,7 +56,7 @@ export default function Cart(){
                     <img src={item.images[0]} alt={item.title} />
                     <div>
                       <h3>{item.title}</h3>
-                      <p>{item.description}</p>
+                      {/* <p>{item.description}</p> */}
                       <button onClick={() => dispatch(removeFromCart({id: item.id}))}>
                         Remove
                       </button>

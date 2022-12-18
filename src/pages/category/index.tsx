@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useSelector , useDispatch} from "react-redux"
 import './index.css'
 import {toggleFromProductList } from "../../store/wishlistSlice"
@@ -14,8 +14,7 @@ export default function Category(){
     useEffect(()=>{
         //@ts-ignore
         dispatch(getProducts([gender, category]))
-
-    },[]);
+    },[gender, category]);
 
 
     const navigate=useNavigate();
@@ -34,8 +33,9 @@ export default function Category(){
                   <div className="product-list-img-container" onClick={()=>handleNavigate(item.id)}>
                     <img src={item.images[0]} alt={item.title} />
                     <i
-                      onClick={() => {
+                      onClick={(e) => {
                         dispatch(toggleFromProductList(item));
+                        e.stopPropagation();
                       }}
                       className="fa-regular fa-heart"
                     ></i>
