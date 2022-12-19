@@ -70,6 +70,7 @@
   text-decoration: none;
   list-style-type: none;
   padding: 0px;
+  margin-bottom: 47px;
 }
 
 .signIn-header-item{
@@ -85,6 +86,7 @@
   transition: color .25s ease,border .25s ease;
   display: block;
   padding: 13px 0;
+  text-decoration: none;
 
 }
 
@@ -159,4 +161,10 @@ input:focus {
   color: red;
   margin-left: 10px;
 
+}
+
+.login{
+  cursor: pointer;
+  color: #000;
+  font-size: 15px;
 }

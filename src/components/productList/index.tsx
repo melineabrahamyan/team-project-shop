@@ -21,7 +21,6 @@ function ProductList() {
       });
   }, []);
 
-  console.log(store, "store");
   return (
     <>
       {/* {store.map((product) => {
