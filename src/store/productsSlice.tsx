@@ -35,7 +35,7 @@ export const getProducts=createAsyncThunk('products', async([gender, category]: 
 
 
 
-const productsSlice=createSlice({
+const productsSlice = createSlice({
     name: 'products',
     initialState,
     reducers: { },

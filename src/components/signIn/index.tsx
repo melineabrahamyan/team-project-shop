@@ -53,7 +53,7 @@ export default function SignIn() {
     }
     return (
         <div>
-            <div onClick={() => setSignIn(true)}>SignIn</div>
+            <div onClick={() => setSignIn(true)}><span className='login'>SignIn</span></div>
             {SignIn ?
                 <div className='signIn-box'>
                     <div className='signIn-wrapper'>
