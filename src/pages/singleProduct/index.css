@@ -4,10 +4,19 @@
    padding: 30px 50px
 }
 
+.sp-si-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 
 .sp-details-container, .sp-img-container, .sp-img-list-container{
     width: 33.33%;
     height: 100%;
+}
+
+.sp-similar-items{
+  margin:  auto;
 }
 
 .sp-img-container{

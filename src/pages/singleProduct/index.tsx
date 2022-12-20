@@ -6,9 +6,10 @@ import { toggleFromProductList } from "../../store/wishlistSlice";
 import { Item } from "../../constants/itemType";
 import {projectFireStore} from '../../firebase';
 import './index.css'
+import SimilarItems from "../../components/similarItems";
 
 export default function SingleProduct(){
-    const {gender, id}=useParams();
+    const {gender, category, id}=useParams();
     const dispatch = useDispatch();
 
     const [singleProduct, setSingleProduct] = useState<Item>();
@@ -33,7 +34,7 @@ export default function SingleProduct(){
       
     },[gender, id]);
 
-    const [image, setImage]=useState(singleProduct?.images[0]);
+    const [image, setImage]=useState('');
 
     const [showSizes, setShowSizes]=useState(false)
     const handleShowSizes=()=>{
@@ -54,9 +55,10 @@ export default function SingleProduct(){
             setShowSizes(true)
         }
     }
-    
+   
+  
     return <>
-     {singleProduct? <>
+     {singleProduct? <div className="sp-si-container">
         <div className="sp-page-container">
              <div className="sp-details-container">
                 <h2>{singleProduct.title}</h2>
@@ -83,7 +85,8 @@ export default function SingleProduct(){
                     onClick={() => {
                         dispatch(toggleFromProductList(singleProduct));
                     }}
-                    className="fa-regular fa-heart"
+                    // className="fa-regular fa-heart"
+                    className='fa-regular fa-heart'
                 ></i>
              </div>
             <div className="sp-img-list-container">
@@ -94,7 +97,10 @@ export default function SingleProduct(){
                   })}  
              </div>
         </div>
-    </> : ''}
+        {singleProduct.similarItems?.length > 0 ? <div className="sp-similar-items"><SimilarItems 
+         //@ts-ignore
+            setImage={setImage} gender={gender as string} category={category as string} productsIDs={singleProduct.similarItems} /></div> : ''}
+    </div> : ''}
     </>
 }
 
