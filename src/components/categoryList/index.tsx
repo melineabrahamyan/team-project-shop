@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-
+import "./style.css";
 export default function CategoryList() {
   const navigate = useNavigate();
   const handleWomanPagesAll = () => {
