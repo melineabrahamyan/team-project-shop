@@ -37,13 +37,8 @@
   }
 }
 
-
-
-
-
-
 .signIn-box {
-  opacity: .95;
+  opacity: 0.95;
   background-color: #f3f3f3;
   z-index: 50;
   top: 0;
@@ -56,53 +51,53 @@
   display: flex;
 }
 
-.signIn-wrapper{
-  width:500px;
+.signIn-wrapper {
+  width: 500px;
   position: relative;
 }
-.signIn-content{
+.signIn-content {
   background-color: #fff;
-  padding: 80px calc(10% + 1.6px - 8px)
+  padding: 80px calc(10% + 1.6px - 8px);
 }
 
-.signIn-header{
+.signIn-header {
   display: flex;
   text-decoration: none;
   list-style-type: none;
   padding: 0px;
 }
 
-.signIn-header-item{
+.signIn-header-item {
   width: 50%;
 }
 
-.signIn-header-item a{
+.signIn-header-item a {
   color: #000;
   font-size: 15px;
   line-height: 21px;
-  font-family: Neue-Haas-Grotesk-Medium,HelveticaNeue-Light,'Helvetica Neue Light','Helvetica Neue',Helvetica,Arial,Sans-Serif;
+  font-family: Neue-Haas-Grotesk-Medium, HelveticaNeue-Light,
+    "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, Sans-Serif;
   font-weight: 400;
-  transition: color .25s ease,border .25s ease;
+  transition: color 0.25s ease, border 0.25s ease;
   display: block;
   padding: 13px 0;
-
 }
 
-.signIn-body-box{
+.signIn-body-box {
   border: none;
   width: 100%;
   overflow: hidden;
   margin-bottom: 25px;
-  caret-color: rgba(0,0,0,.7);
+  caret-color: rgba(0, 0, 0, 0.7);
 }
 
-.signIn-content-body{
+.signIn-content-body {
   width: 100%;
   padding-right: 8px;
   padding-left: 8px;
 }
 
-.signIn-body-box label{
+.signIn-body-box label {
   color: #a6a6a6;
   font-size: 12px;
   line-height: 17px;
@@ -110,7 +105,7 @@
   padding: 8px 0;
 }
 
-.signIn-body-box  input{
+.signIn-body-box input {
   border: none;
   border-bottom: 1px solid #a6a6a6;
   font-size: 14px;
@@ -139,24 +134,175 @@ input:focus {
   width: 100%;
 }
 
-.signIn-box-close{
+.signIn-box-close {
   background: white;
   border: none;
   position: absolute;
-  right:13px;
+  right: 13px;
   top: 13px;
   cursor: pointer;
 }
 
 .active-signIn {
   border-bottom: 2px solid #000000;
-  transition: border-color .25s ease;
+  transition: border-color 0.25s ease;
   display: inline-block;
   text-align: center;
 }
 
-.errorTextAuth{
+.errorTextAuth {
   color: red;
   margin-left: 10px;
+}
 
+.globalContainer1 {
+  position: relative;
+}
+
+.container1 {
+  position: absolute;
+  top: 300px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.container1 h1 {
+  font-size: 66px;
+  font-weight: 600;
+  font-family: tahoma;
+  color: white;
+}
+
+.container1 p {
+  font-size: 22px;
+  color: white;
+  font-family: tahoma;
+  font-weight: 600;
+  margin-top: -40px;
+}
+
+.container1 button {
+  height: 46px;
+  width: 200px;
+  margin-left: 16px;
+  cursor: pointer;
+  background-color: black;
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+}
+
+.globalContainer2 {
+  position: relative;
+}
+
+.globalContainer2 img {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.container2 {
+  position: absolute;
+  left: 80px;
+  top: 20px;
+}
+
+.container2 h1 {
+  font-size: 66px;
+  font-weight: 600;
+  font-family: tahoma;
+  color: white;
+}
+
+.container2 p {
+  position: absolute;
+  left: 0;
+  font-size: 22px;
+  color: white;
+  font-family: tahoma;
+  font-weight: 600;
+  margin-top: -40px;
+}
+
+.container2 button {
+  position: absolute;
+  left: 0;
+  height: 46px;
+  width: 200px;
+  cursor: pointer;
+  background-color: black;
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+}
+
+.globalContainer3 {
+  position: relative;
+}
+
+.container3 {
+  position: absolute;
+  left: 80px;
+  top: 260px;
+}
+
+.container3 button {
+  position: absolute;
+  left: 0;
+  height: 46px;
+  width: 200px;
+  cursor: pointer;
+  background-color: black;
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+}
+
+.div {
+  height: 400px;
+  width: 40%;
+  line-height: 25px;
+  text-align: left;
+  position: absolute;
+  left: 32%;
+  right: 0;
+}
+
+.footerContaner {
+  height: 500px;
+  width: 100%;
+  background-color: #a6a6a6c7;
+}
+
+.footer {
+  gap: 50px;
+  display: flex;
+}
+
+.footerDiv {
+  margin-top: 40px;
+  margin-left: 60px;
+}
+
+.footerDiv h3 {
+  text-align: left;
+  /* line-height: 25px; */
+}
+
+.footerDiv p {
+  font-size: 12px;
+  text-align: left;
+  font-family: tahoma;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.footerInfo {
+  margin-top: 20px;
+  position: absolute;
+  left: 20%;
+  height: 50px;
+  width: 790px;
 }
