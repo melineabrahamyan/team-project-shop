@@ -3,8 +3,13 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "./index";
 import { Item } from '../constants/itemType';
 
+export interface WishlistItemType extends Item{
+  gender: string; 
+};
+
+
 type WishlistState = {
-  wishlistItems: Item[];
+  wishlistItems: WishlistItemType[];
 };
 
 const initialState = { wishlistItems: [] } as WishlistState;
@@ -15,12 +20,13 @@ const wishlistSlice = createSlice({
   reducers: {
     toggleFromProductList(
       state,
-      action: PayloadAction<Item>
+      action: PayloadAction<WishlistItemType>
     ) {
+      console.log(action.payload)
       const itemIndex = state.wishlistItems.findIndex(
         (item) => item.id === action.payload.id
       );
-console.log(itemIndex)
+
       if (itemIndex>=0) {
         state.wishlistItems = state.wishlistItems.filter(
           (item) => item.id !== action.payload.id

@@ -3,16 +3,19 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import type {RootState} from './index';
 import { Item } from '../constants/itemType';
 
+
 interface CartItem extends Item{
   cartQuantity: number; 
+  gender: string
 };
 
 type CartState= {
 cartItems: CartItem[];
 cartTotalQuantity: number;
-cartTotalAmount: number
+cartTotalAmount: number;
 };
 
+//@ts-ignore
 const initialState = { cartItems: [], cartTotalQuantity: 0, cartTotalAmount: 0 } as CartState;
 
 
@@ -30,6 +33,7 @@ reducers: {
       //@ts-ignore
       state.cartItems.push(tempProduct)
     }
+   
   },
   decreaseCart(state, action: PayloadAction<{id : string}>) {
       const itemIndex = state.cartItems.findIndex(
