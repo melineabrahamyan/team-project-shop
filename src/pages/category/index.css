@@ -38,13 +38,6 @@
      right: 3%;
  }
 
- .product-list-img-container .fa-heart:hover {
-    color: rgb(144, 143, 143);
-}
-
-.fa-heart:active{
-    background-color: black;
-}
 
   .product-list-product-price{
     font-weight: bold;

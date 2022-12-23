@@ -4,10 +4,12 @@ import './index.css'
 import {toggleFromProductList } from "../../store/wishlistSlice"
 import { getProducts, selectProducts } from "../../store/productsSlice"
 import { useNavigate, useParams } from "react-router"
+import { selectWishlist } from "../../store/wishlistSlice"
 
 
 export default function Category(){
     const products=useSelector(selectProducts);
+    const {wishlistItems}=useSelector(selectWishlist)
     const dispatch=useDispatch();
     const {gender, category}=useParams();
   
@@ -34,10 +36,11 @@ export default function Category(){
                     <img src={item.images[0]} alt={item.title} />
                     <i
                       onClick={(e) => {
-                        dispatch(toggleFromProductList(item));
+                        //@ts-ignore
+                        dispatch(toggleFromProductList({...item, gender}));
                         e.stopPropagation();
                       }}
-                      className="fa-regular fa-heart"
+                      className={`${wishlistItems.find(i=>i.id===item.id)? 'fa-solid fa-heart' : 'fa-regular fa-heart'}`}
                     ></i>
                   </div>
                   <div className="product-list-product-price">$ {item.price}</div>
