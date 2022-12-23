@@ -12,7 +12,8 @@ type WishlistState = {
   wishlistItems: WishlistItemType[];
 };
 
-const initialState = { wishlistItems: [] } as WishlistState;
+//@ts-ignore
+const initialState = { wishlistItems: localStorage.getItem('Wishlist-Items')? JSON.parse(localStorage.getItem('Wishlist-Items')) : [] } as WishlistState;
 
 const wishlistSlice = createSlice({
   name: "wishlist",
@@ -34,7 +35,7 @@ const wishlistSlice = createSlice({
       } else {
         state.wishlistItems.push(action.payload);
       }
-      
+      localStorage.setItem('Wishlist-Items', JSON.stringify(state.wishlistItems));
     },
 
     removeFromWishlist(state, action: PayloadAction<{ id: string }>) {
@@ -47,7 +48,9 @@ const wishlistSlice = createSlice({
 
         return state;
       });
+      localStorage.setItem('Wishlist-Items', JSON.stringify(state.wishlistItems));
     },
+    
   },
 });
 
