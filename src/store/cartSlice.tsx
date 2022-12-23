@@ -16,7 +16,7 @@ cartTotalAmount: number;
 };
 
 //@ts-ignore
-const initialState = { cartItems: [], cartTotalQuantity: 0, cartTotalAmount: 0 } as CartState;
+const initialState = {cartItems: localStorage.getItem('Cart-Items')? JSON.parse(localStorage.getItem('Cart-Items')) : [], cartTotalQuantity: 0, cartTotalAmount: 0 } as CartState;
 
 
 const cartSlice = createSlice({
@@ -33,8 +33,10 @@ reducers: {
       //@ts-ignore
       state.cartItems.push(tempProduct)
     }
-   
+    localStorage.setItem('Cart-Items', JSON.stringify(state.cartItems));
   },
+
+
   decreaseCart(state, action: PayloadAction<{id : string}>) {
       const itemIndex = state.cartItems.findIndex(
         (item) => item.id === action.payload.id
@@ -48,7 +50,9 @@ reducers: {
           (item) => item.id !== action.payload.id
         );
       }
+      localStorage.setItem('Cart-Items', JSON.stringify(state.cartItems));
     },
+
     removeFromCart(state, action: PayloadAction<{id: string}>) {
       state.cartItems.map((cartItem) => {
         if (cartItem.id === action.payload.id) {
@@ -58,7 +62,9 @@ reducers: {
         }
         return state;
       });
+      localStorage.setItem('Cart-Items', JSON.stringify(state.cartItems));
     },
+
     getTotals(state) {
       let { total, quantity } = state.cartItems.reduce(
         (cartTotal, cartItem) => {
