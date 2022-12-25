@@ -3,11 +3,17 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "./index";
 import { Item } from '../constants/itemType';
 
-type WishlistState = {
-  wishlistItems: Item[];
+export interface WishlistItemType extends Item{
+  gender: string; 
 };
 
-const initialState = { wishlistItems: [] } as WishlistState;
+
+type WishlistState = {
+  wishlistItems: WishlistItemType[];
+};
+
+//@ts-ignore
+const initialState = { wishlistItems: localStorage.getItem('Wishlist-Items')? JSON.parse(localStorage.getItem('Wishlist-Items')) : [] } as WishlistState;
 
 const wishlistSlice = createSlice({
   name: "wishlist",
@@ -15,12 +21,13 @@ const wishlistSlice = createSlice({
   reducers: {
     toggleFromProductList(
       state,
-      action: PayloadAction<Item>
+      action: PayloadAction<WishlistItemType>
     ) {
+      console.log(action.payload)
       const itemIndex = state.wishlistItems.findIndex(
         (item) => item.id === action.payload.id
       );
-console.log(itemIndex)
+
       if (itemIndex>=0) {
         state.wishlistItems = state.wishlistItems.filter(
           (item) => item.id !== action.payload.id
@@ -28,7 +35,7 @@ console.log(itemIndex)
       } else {
         state.wishlistItems.push(action.payload);
       }
-      
+      localStorage.setItem('Wishlist-Items', JSON.stringify(state.wishlistItems));
     },
 
     removeFromWishlist(state, action: PayloadAction<{ id: string }>) {
@@ -41,7 +48,9 @@ console.log(itemIndex)
 
         return state;
       });
+      localStorage.setItem('Wishlist-Items', JSON.stringify(state.wishlistItems));
     },
+    
   },
 });
 

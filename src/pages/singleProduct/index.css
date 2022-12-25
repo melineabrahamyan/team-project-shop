@@ -87,6 +87,7 @@
 
 .sp-add-to-cart{
     border: 1px solid black;
+    align-items: center;
 }
 
 
@@ -100,9 +101,10 @@
     height: 30px;
     cursor: pointer;
     text-align: center;
-
+   padding-top: 7px
 }
 
-.size:checked{
-    background-color: aquamarine;
+.choosen-size{
+    background-color: rgb(178, 245, 223);
 }
+

@@ -7,10 +7,13 @@ import { Item } from "../../constants/itemType";
 import {projectFireStore} from '../../firebase';
 import './index.css'
 import SimilarItems from "../../components/similarItems";
+import { selectWishlist } from "../../store/wishlistSlice";
+import { useSelector } from "react-redux";
 
 export default function SingleProduct(){
     const {gender, category, id}=useParams();
     const dispatch = useDispatch();
+    const {wishlistItems}=useSelector(selectWishlist);
 
     const [singleProduct, setSingleProduct] = useState<Item>();
 
@@ -41,9 +44,11 @@ export default function SingleProduct(){
         setShowSizes(n=>!n);   
     }
 
+    const [choosenSize,setChoosenSize]=useState('')
     const [isSizeChosen, setIsSizeChosen]=useState(false);
-    const handleIsSizeShown=()=>{
-        setIsSizeChosen(true)
+    const handleIsSizeShown=(size: string)=>{
+        setIsSizeChosen(true);
+        setChoosenSize(size)
     }
 
     const handleAddToCart=()=>{
@@ -51,6 +56,7 @@ export default function SingleProduct(){
             dispatch(addToCart(singleProduct as Item));
             setIsSizeChosen(false);
             setShowSizes(false);   
+            setChoosenSize('')
         }else{
             setShowSizes(true)
         }
@@ -72,7 +78,7 @@ export default function SingleProduct(){
                     
                     {showSizes? <div className="sizes">
                         {singleProduct.sizes.map(size=>{
-                            return <div className="size" key={size} onClick={handleIsSizeShown}>{size}</div>
+                            return <div className={`${size===choosenSize? 'size choosen-size': 'size'}`} key={size} onClick={()=>{handleIsSizeShown(size)}}>{size}</div>
                         })}
                     </div>: ''}
                     <div className="sp-add-to-cart" onClick={handleAddToCart}>Add to cart</div>
@@ -83,10 +89,10 @@ export default function SingleProduct(){
                 <img src={image || singleProduct.images[0]} alt={singleProduct.title} />
                 <i
                     onClick={() => {
-                        dispatch(toggleFromProductList(singleProduct));
+                        //@ts-ignore
+                        dispatch(toggleFromProductList({...singleProduct, gender}));
                     }}
-                    // className="fa-regular fa-heart"
-                    className='fa-regular fa-heart'
+                    className={`${wishlistItems.find(item=>item.id===singleProduct.id)? 'fa-solid fa-heart' : 'fa-regular fa-heart'}`}
                 ></i>
              </div>
             <div className="sp-img-list-container">
