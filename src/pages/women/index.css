@@ -1,0 +1,107 @@
+.womens-container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+ 
+}
+
+.womens-category-container{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+}
+
+.womens-all{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.womens-img-container{
+    position: relative;
+}
+
+.womens-all-img{
+    width: 1200px;
+    height: auto;
+    position: relative;
+}
+
+.womens-img-container img{
+    width: 320px;
+    height: auto;
+    position: relative;
+}
+
+.womens-img-container div{
+    position: absolute;
+    font-size: 14px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    color: white;
+    padding: 8px 8px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+.womens-special{
+    position: relative;
+   width: 100%;
+}
+
+
+.womens-special img{
+   
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.all-button{
+  position: absolute;
+  top: 20%;
+  left: 80%;
+  transform: translate(-20%, -80%);
+  width: 180px;
+  background-color: black;
+  color: white;
+  padding: 18px 0;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.special-details{
+position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.special-details h2{
+    font-size: 80px;
+    color: white;
+ }
+    
+ .special-details div{
+    width: 180px;
+    background-color: black;
+    color: white;
+    padding: 18px 0;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+ }
+    

@@ -6,6 +6,7 @@ import About from "./pages/about";
 import Cart from "./pages/cart";
 import Category from "./pages/category";
 import Wishlist from "./pages/wishlist";
+import Women from "./pages/women";
 // @ts-ignore
 import Contact from "./pages/contact";
 //components
@@ -13,6 +14,7 @@ import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import Gender from "./pages/gender";
 import SingleProduct from "./pages/singleProduct";
+
 
 function App() {
   return (
@@ -24,7 +26,8 @@ function App() {
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/:gender" element={<Gender />} />
+        {/* <Route path="/:gender" element={<Gender />} /> */}
+        <Route path="/:women" element={<Women />} />
         <Route path="/:gender/:category" element={<Category />} />
         <Route path="/:gender/:category/:id" element={<SingleProduct />} />
       </Routes>
