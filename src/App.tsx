@@ -6,6 +6,7 @@ import About from "./pages/about";
 import Cart from "./pages/cart";
 import Category from "./pages/category";
 import Wishlist from "./pages/wishlist";
+// @ts-ignore
 import Contact from "./pages/contact";
 //components
 import Navbar from "./components/navbar";
