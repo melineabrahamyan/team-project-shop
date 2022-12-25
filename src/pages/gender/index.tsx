@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { projectFireStore } from "../../firebase";
 import Product from "./product";
 import "./style.css";
@@ -12,11 +12,12 @@ import { useParams } from "react-router-dom";
 import Pagination from "../../components/paginationControlled";
 import PaginationControlled from "../../components/paginationControlled";
 
+
 export type Tstore = {
   id: string;
   title: string;
   description: string;
-  size: string;
+  sizes: any;
   price: number;
   img: string;
 };
@@ -25,6 +26,7 @@ function Gender() {
   const [store, setStore] = useState<Tstore[]>([]);
   const [dataStore, setDataStore] = useState<Tstore[]>([]);
   const [page, setPage] = useState(1);
+
   const params = useParams();
 
   console.log(params, "params");
@@ -73,6 +75,33 @@ function Gender() {
               />
               <Product {...product} />
               {/* <button onClick={() => dispatch(addToCart(product))}>
+        setStore(
+          //@ts-ignore
+          snapshot.docs.map((doc) => {
+            return { id: doc.id, ...doc.data() };
+          })
+        );
+        SetFiterPrduct(
+            //@ts-ignore
+            snapshot.docs.map((doc) => {
+              return { id: doc.id, ...doc.data() };
+            })
+        )
+      });
+  }, [params.gender]);
+    return (
+    <div className="container">
+
+      {FiterPrduct.map((product) => {
+        return (
+
+          <div key={product.id}>
+            <FavoriteBorderIcon
+              // onClick={() => dispatch(toggleFromProductList(product))}
+              className="favoriteIcon"
+            />
+            <Product {...product} />
+            {/* <button onClick={() => dispatch(addToCart(product))}>
               Add to bag
             </button> */}
             </div>

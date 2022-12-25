@@ -1,4 +1,3 @@
-import React from "react";
 import { Routes, Route } from "react-router-dom";
 import './App.css'
 //pages
@@ -7,11 +6,13 @@ import About from "./pages/about";
 import Cart from "./pages/cart";
 import Category from "./pages/category";
 import Wishlist from "./pages/wishlist";
-
+// @ts-ignore
+import Contact from "./pages/contact";
 //components
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import Gender from "./pages/gender";
+import SingleProduct from "./pages/singleProduct";
 
 function App() {
   return (
@@ -22,9 +23,10 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/cart" element={<Cart />} />
-        {/* <Route path="/category/:id" element={<Category />} /> */}
-        <Route path="/category" element={<Category />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/:gender" element={<Gender />} />
+        <Route path="/:gender/:category" element={<Category />} />
+        <Route path="/:gender/:category/:id" element={<SingleProduct />} />
       </Routes>
       <Footer />
     </div>

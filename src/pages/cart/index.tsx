@@ -15,6 +15,7 @@ export default function Cart(){
 
     const {cartItems, cartTotalAmount, cartTotalQuantity}=cart;
 
+
     return <div>
         <div className="cart-container">
       <h2>Shopping Cart</h2>
@@ -53,10 +54,9 @@ export default function Cart(){
               cartItems.map((item) => (
                 <div className="cart-item" key={item.id}>
                   <div className="cart-product">
-                    <img src={item.images[0]} alt={item.title} />
+                    <img src={item.images[0]} alt={item.title} onClick={()=>{console.log(item)}}/>
                     <div>
                       <h3>{item.title}</h3>
-                      <p>{item.description}</p>
                       <button onClick={() => dispatch(removeFromCart({id: item.id}))}>
                         Remove
                       </button>

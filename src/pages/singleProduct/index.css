@@ -1,0 +1,110 @@
+.sp-page-container{
+    display: flex;
+    flex-direction: row;
+   padding: 30px 50px
+}
+
+.sp-si-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.sp-details-container, .sp-img-container, .sp-img-list-container{
+    width: 33.33%;
+    height: 100%;
+}
+
+.sp-similar-items{
+  margin:  auto;
+}
+
+.sp-img-container{
+    position: relative;
+}
+
+.sp-img-container img{
+    width: 100%;
+   height: auto;
+    display: block;
+    object-fit: cover;
+} 
+
+.sp-img-container .fa-heart {
+    position: absolute; 
+    top: 3%; 
+    right: 3%;
+    cursor: pointer;
+}
+
+.sp-img-list-container{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    
+}
+
+.sp-img-list-container img{
+    width: 70px;
+    height: auto;
+    cursor: pointer;
+}
+
+.fa-horizontal-rule{
+    background-color: rgb(101, 101, 101);
+    height: 0.01px;
+}
+
+
+.sp-details-container h2, h3, p, .sp-cart-container{
+    text-align: left;
+    width: 350px;
+}
+
+.sp-details-container, .sp-details-container p{
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sp-cart-container{
+    padding-top: 30px;
+}
+
+.sp-add-to-cart, .choose-size{
+    height: 60px;
+    text-align: center;
+    align-items: center;
+    margin-top: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    color: black;
+}
+
+
+
+
+.sp-add-to-cart{
+    border: 1px solid black;
+    align-items: center;
+}
+
+
+
+.sizes{
+    padding-bottom: 10px;
+    color: black;
+}
+
+.size{
+    height: 30px;
+    cursor: pointer;
+    text-align: center;
+   padding-top: 7px
+}
+
+.choosen-size{
+    background-color: rgb(178, 245, 223);
+}
+

@@ -5,13 +5,13 @@ import { useDispatch } from "react-redux";
 
 export default function Product({
   title,
-  size,
+  sizes,
   price,
   img,
   id,
 }: {
   title: string;
-  size: string;
+  sizes: string;
   price: number;
   img: string;
   id: string;
@@ -21,7 +21,7 @@ export default function Product({
       {/* <FavoriteBorderIcon onClick={() => dispatch(toggleFromProductList(product))} className="favoriteIcon"/> */}
       <img src={img} alt="" className="image" />
       <div>{title}</div>
-      <div>{size}</div>
+      <div>{sizes}</div>
       <div>{price}</div>
     </div>
   );

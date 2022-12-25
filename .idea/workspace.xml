@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="232306d1-5ad5-40f3-809e-b167a63bcf06" name="Changes" comment="" />
+    <list default="true" id="232306d1-5ad5-40f3-809e-b167a63bcf06" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/contact/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/contact/index.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,7 +42,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/User/Desktop/New folder (5) - Copy",
+    "last_opened_file_path": "C:/Users/User/Desktop/Qnucyun",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -48,6 +54,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\Desktop\New folder (5)\team-project-shop\src\pages\contact" />
       <recent name="C:\Users\User\Desktop\New folder (5)\team-project-shop\src" />
     </key>
   </component>
@@ -65,6 +72,10 @@
       <workItem from="1670596604202" duration="46000" />
       <workItem from="1670748484128" duration="1328000" />
       <workItem from="1670752077113" duration="23000" />
+      <workItem from="1671092055961" duration="6356000" />
+      <workItem from="1671101361522" duration="633000" />
+      <workItem from="1671102035255" duration="30974000" />
+      <workItem from="1671539230213" duration="27214000" />
     </task>
     <servers />
   </component>

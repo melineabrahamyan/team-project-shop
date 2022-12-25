@@ -1,51 +1,53 @@
-import { useEffect, useState } from "react"
-import { projectFireStore } from "../../firebase"
+import { useEffect } from "react"
+import { useSelector , useDispatch} from "react-redux"
 import './index.css'
-import {Item} from '../../constants/itemType'
 import {toggleFromProductList } from "../../store/wishlistSlice"
-import { useDispatch } from "react-redux"
+import { getProducts, selectProducts } from "../../store/productsSlice"
+import { useNavigate, useParams } from "react-router"
+import { selectWishlist } from "../../store/wishlistSlice"
 
 
 export default function Category(){
-    const [store, setStore]=useState<Item[]>([]);
-    const dispatch=useDispatch()
-    // let b=store.find(item=>item.similarItems[0]==='Czx3INjIJPFVsW05hGUv')
+    const products=useSelector(selectProducts);
+    const {wishlistItems}=useSelector(selectWishlist)
+    const dispatch=useDispatch();
+    const {gender, category}=useParams();
   
     useEffect(()=>{
-        projectFireStore.collection(`/mens`)
-        .get()
-      .then((snapshot) => {
-        setStore(
-          //@ts-ignore
-          snapshot.docs.map((doc) => {
-            return { id: doc.id, ...doc.data() };
-          })
-        );
-      });
-    },[])
+        //@ts-ignore
+        dispatch(getProducts([gender, category]))
+    },[gender, category]);
+
+
+    const navigate=useNavigate();
+    const handleNavigate=(id: string)=>{
+      navigate(`${id}`)
+    }
 
     return <div>
         <div className="product-list-container">
-        <h2>All</h2>
+        <h2>{category?.toUpperCase()}</h2>
         <div className="product-list-items">
-          {store.map((item) => {
-            return (
-              <div className="product-list-item">
-                <div className="product-list-img-container">
-                  <img src={item.images[0]} alt={item.title} />
-                  <i
-                    onClick={() => {
-                      dispatch(toggleFromProductList(item));
-                    
-                    }}
-                    className="fa-regular fa-heart"
-                    
-                  ></i>
+          {products.map((item) => {
+            if(item){
+              return (
+                <div key={item.id} className="product-list-item">
+                  <div className="product-list-img-container" onClick={()=>handleNavigate(item.id)}>
+                    <img src={item.images[0]} alt={item.title} />
+                    <i
+                      onClick={(e) => {
+                        //@ts-ignore
+                        dispatch(toggleFromProductList({...item, gender}));
+                        e.stopPropagation();
+                      }}
+                      className={`${wishlistItems.find(i=>i.id===item.id)? 'fa-solid fa-heart' : 'fa-regular fa-heart'}`}
+                    ></i>
+                  </div>
+                  <div className="product-list-product-price">$ {item.price}</div>
+                  <div className="product-list-product-name">{item.title}</div>
                 </div>
-                <div className="product-list-product-price">$ {item.price}</div>
-                <div className="product-list-product-name">{item.title}</div>
-              </div>
-            );
+              );
+            }
           })}
         </div>
       </div>
