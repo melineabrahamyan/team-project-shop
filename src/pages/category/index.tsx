@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from "react"
 import { useSelector , useDispatch} from "react-redux"
 import './index.css'
-import {toggleFromProductList } from "../../store/wishlistSlice"
+import {toggleFromProductList, WishlistItemType } from "../../store/wishlistSlice"
 import { getProducts, selectProducts } from "../../store/productsSlice"
+import { selectWishlist } from "../../store/wishlistSlice"
 import { useNavigate, useParams } from "react-router"
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
@@ -10,24 +11,14 @@ import Select, {SelectChangeEvent} from "@mui/material/Select";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-// import {Tstore} from "../gender";
 
-export type Tstore = {
-    id: string;
-    title: string;
-    description: string;
-    sizes: any;
-    price: number;
-    images: any;
-    category:string;
-    similarItems:any;
-    gender:any;
-};
+
 
 
 export default function Category(){
-    const [FiterPrduct,SetFiterPrduct] = useState<Tstore[]>([])
+    const [FiterPrduct,SetFiterPrduct] = useState<WishlistItemType[]>([])
     const products = useSelector(selectProducts);
+    const {wishlistItems}=useSelector(selectWishlist);
     const dispatch=useDispatch();
     const {gender, category}=useParams();
 
@@ -82,12 +73,10 @@ export default function Category(){
         SetFiterPrduct(resulut)
         SetSize(event.target.value)
     };
+
+
     return <div>
-
-
-
         <div className="product-list-container">
-            <h2>{category?.toUpperCase()}</h2>
             <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
                 <InputLabel id="demo-simple-select-standard-label">Size</InputLabel>
                 <Select
@@ -105,8 +94,8 @@ export default function Category(){
                 </Select>
                 <div className='filter_box'>
                     <h3>By Price</h3>
-                    <Box sx={{ width: 300 }}>
-                        <Slider
+                    <Box sx={{ width: 300}}>
+                        <Slider sx={{color: 'black', height: '1px'}}
                             getAriaLabel={() => 'Minimum distance'}
                             value={value1}
                             onChange={handleChange1}
@@ -129,7 +118,7 @@ export default function Category(){
                                             dispatch(toggleFromProductList(item));
                                             e.stopPropagation();
                                         }}
-                                        className="fa-regular fa-heart"
+                                        className={`${wishlistItems.find(i=>i.id===item.id)? 'fa-solid fa-heart' : 'fa-regular fa-heart'}`}
                                     ></i>
                                 </div>
                                 <div className="product-list-product-price">$ {item.price}</div>
