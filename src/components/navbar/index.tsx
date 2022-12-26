@@ -117,6 +117,7 @@ function Navbar() {
                   <Typography textAlign="center">About</Typography>
                 </Link>
               </MenuItem>
+          
             </Menu>
           </Box>
           {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}

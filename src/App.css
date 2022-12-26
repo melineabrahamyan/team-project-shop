@@ -251,8 +251,8 @@ input:focus {
 
 .container3 {
   position: absolute;
-  left: 80px;
-  top: 260px;
+  left: calc(55% - 200px);
+  top: calc(50% - 46px);
 }
 
 .container3 button {
@@ -286,6 +286,7 @@ input:focus {
 .footer {
   gap: 50px;
   display: flex;
+  justify-content: space-between;
 }
 
 .footerDiv {
@@ -307,10 +308,14 @@ input:focus {
 }
 
 .footerInfo {
-  /* margin-top: 20px; */
-  /* position: absolute; */
-  /* left: 20%; */
-  border: 1px solid black;
-  height: 50px;
-  width: 790px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;;
+}
+
+.footerInfo p{
+  text-align: center;
+  width: 500px!important;
 }
