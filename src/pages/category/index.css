@@ -49,3 +49,14 @@
   text-align: left;
 }
 
+
+.filter_box{
+  margin-top: 15px;
+  align-items: center;
+}
+
+
+.filter_box h3 {
+  text-align: center!important;
+  width: auto !important;
+}
